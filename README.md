@@ -24,6 +24,6 @@ yarn run dev # yarn
 npm run lint # log warnings and errors by npm
 npm run lint:fix # fix files
 
-yarn lint # log warnings and errors by npm
+yarn lint # log warnings and errors by yarn
 yarn lint:fix # fix files
 ```
