@@ -34,6 +34,6 @@
   },
   "lint-staged": {
     "*.{js,vue}": "eslint --fix",
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write ."
   }
 }
