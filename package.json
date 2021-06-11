@@ -4,7 +4,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint src --ext .js --ext .vue",
+    "lint": "eslint '**/*.{js,vue}'",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install"
   },
