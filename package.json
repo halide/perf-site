@@ -12,7 +12,8 @@
     "echarts": "^5.1.2",
     "vue": "^3.0.5",
     "vue-echarts": "^6.0.0-rc.6",
-    "vue-router": "^4.0.8"
+    "vue-router": "^4.0.8",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.354",
@@ -33,7 +34,6 @@
     "vite-plugin-icons": "^0.6.1"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint --fix",
-    "**/*": "prettier --write ."
+    "*.{js,vue}": "eslint --fix"
   }
 }
