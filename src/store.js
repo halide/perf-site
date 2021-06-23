@@ -14,11 +14,9 @@ const store = createStore({
     },
     hideSidebar(state) {
       state.isSidebarShow = !state.isSidebarShow
-      console.log(state.isSidebarShow)
     },
     hideMobileSidebar(state) {
       state.isSidebarMobileShow = !state.isSidebarMobileShow
-      console.log(state.isSidebarMobileShow)
     },
   },
 })

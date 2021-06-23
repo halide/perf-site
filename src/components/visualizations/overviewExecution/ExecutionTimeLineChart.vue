@@ -18,9 +18,8 @@ export default {
   },
   setup(props) {
     const echartInit = () => {
-      let myChart = echarts.init(document.getElementById('coverageGraph'))
-      let el = document.getElementById('coverageGraph') // to watch element resize event
-
+      let myChart = echarts.init(document.getElementById('executionTimeChart'))
+      let el = document.getElementById('executionTimeChart') // to watch element resize event
       let option = {
         color: 'gray',
         legend: {
@@ -36,8 +35,8 @@ export default {
         yAxis: {
           type: 'value',
           show: false,
-          min: Math.min(props.vizInfo.data),
-          max: Math.max(props.vizInfo.data),
+          min: Math.min(...props.vizInfo.data),
+          max: Math.max(...props.vizInfo.data),
         },
         tooltip: {
           trigger: 'item',
@@ -71,12 +70,12 @@ export default {
       let listener = function () {
         myChart.resize({
           animation: {
-            duration: 150,
+            duration: 300,
             easing: 'cubicInOut',
           },
         })
       }
-      EleResize.on(el, debounce(listener, 150)) // avoid invoke this event too frequently
+      EleResize.on(el, debounce(listener, 300)) // avoid invoke this event too frequently
     }
     //onMounted
     onMounted(() => {
@@ -91,5 +90,5 @@ export default {
 </script>
 
 <template>
-  <div id="coverageGraph" class="h-20"></div>
+  <div id="executionTimeChart" class="h-20"></div>
 </template>

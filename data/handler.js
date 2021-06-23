@@ -30,3 +30,11 @@ export function getExecutionTime(rawData) {
 
   return totalTime.toFixed(2)
 }
+
+export function getTestRunDate(rawData) {
+  return rawData[0].EndTime
+}
+
+export function getBuildStamp(rawData) {
+  return rawData[0].BuildStamp
+}
