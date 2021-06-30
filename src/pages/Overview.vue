@@ -2,13 +2,24 @@
 import { ref } from 'vue'
 import rawData from '../../data/data1.js'
 import { getTestRunDate } from '../../data/handler.js'
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 
 export default {
+  components: {
+    Listbox,
+    ListboxButton,
+    ListboxOptions,
+    ListboxOption,
+  },
   setup() {
     const testRunDate = ref(getTestRunDate(rawData))
+    const allDetailGraph = ['Execution Time', 'Test Coverage', 'Memory Footprint', 'Code Size']
+    const selectedGraph = ref(allDetailGraph[0])
 
     return {
       testRunDate,
+      allDetailGraph,
+      selectedGraph,
     }
   },
 }
@@ -53,9 +64,49 @@ export default {
             Latest Commit: <span class="text-xs text-gray-500">{{ testRunDate }}</span>
           </div>
         </div>
-        <button class="bg-[#321fdb] w-10 h-10 rounded-lg text-white flex items-center justify-center focus:outline-none hover:bg-[#2818b3]">
-          <i-ri:settings-2-line></i-ri:settings-2-line>
-        </button>
+        <Listbox v-model="selectedGraph" as="div" class="relative inline-block text-left">
+          <div class="relative mt-1">
+            <ListboxButton
+              class="bg-[#321fdb] w-10 h-10 rounded-lg text-white flex items-center justify-center focus:outline-none hover:bg-[#2818b3]"
+            >
+              <i-ri:settings-2-line></i-ri:settings-2-line>
+            </ListboxButton>
+
+            <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
+              <ListboxOptions
+                class="
+                  absolute
+                  w-56
+                  z-50
+                  right-0
+                  py-1
+                  mt-1
+                  overflow-auto
+                  text-base
+                  bg-white
+                  rounded-md
+                  shadow-lg
+                  max-h-60
+                  ring-1 ring-black ring-opacity-5
+                  focus:outline-none
+                  sm:text-sm
+                "
+              >
+                <ListboxOption v-for="graph in allDetailGraph" v-slot="{ active, selected }" :key="graph" :value="graph" as="template">
+                  <li
+                    :class="[
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      selected ? 'bg-gray-100 text-gray-900' : '',
+                      'cursor-pointer select-none relative py-2 pl-10 pr-4',
+                    ]"
+                  >
+                    <span :class="[selected ? 'font-semibold ' : 'font-normal', 'block truncate']">{{ graph }}</span>
+                  </li>
+                </ListboxOption>
+              </ListboxOptions>
+            </transition>
+          </div>
+        </Listbox>
       </div>
       <div class="px-5 mb-8">
         <PeriodExecutionTimeLineChart></PeriodExecutionTimeLineChart>
