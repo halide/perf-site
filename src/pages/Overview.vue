@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <div class="px-6 py-8 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+  <div class="px-6 py-8 space-y-8 md:space-y-0 md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-4">
     <div class="bg-[#321fdb] rounded-md">
       <CoveragerRateCard></CoveragerRateCard>
     </div>
@@ -59,7 +59,7 @@ export default {
     <div class="bg-white rounded-sm border border-[#d8dbe0]">
       <div class="p-5 flex items-center justify-between">
         <div>
-          <div class="text-lg tracking-wider">Execution Time</div>
+          <div class="text-lg tracking-wider">{{ selectedGraph }}</div>
           <div class="text-sm text-gray-500">
             Latest Commit: <span class="text-xs text-gray-500">{{ testRunDate }}</span>
           </div>
@@ -97,7 +97,7 @@ export default {
                     :class="[
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       selected ? 'bg-gray-100 text-gray-900' : '',
-                      'cursor-pointer select-none relative py-2 pl-10 pr-4',
+                      'cursor-pointer select-none relative py-2 pl-4 pr-4',
                     ]"
                   >
                     <span :class="[selected ? 'font-semibold ' : 'font-normal', 'block truncate']">{{ graph }}</span>
@@ -109,7 +109,8 @@ export default {
         </Listbox>
       </div>
       <div class="px-5 mb-8">
-        <PeriodExecutionTimeLineChart></PeriodExecutionTimeLineChart>
+        <PeriodExecutionTimeLineChart v-if="selectedGraph === 'Execution Time'"></PeriodExecutionTimeLineChart>
+        <PeriodTestCoverageBarChart v-else-if="selectedGraph === 'Test Coverage'"></PeriodTestCoverageBarChart>
       </div>
     </div>
   </div>

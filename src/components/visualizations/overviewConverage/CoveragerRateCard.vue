@@ -34,7 +34,7 @@ export default {
 
 <template>
   <div class="p-5">
-    <div class="flex items-center justify-between">
+    <div class="flex flex-wrap items-center justify-between">
       <div class="text-white font-semibold text-lg tracking-wider">
         {{ coverageInfo.passed }} / {{ coverageInfo.passed + coverageInfo.skipped + coverageInfo.failed }}
       </div>
@@ -42,7 +42,7 @@ export default {
         <span v-if="isEqual"></span>
         <span v-else-if="isIncreasing"><i-mdi:transfer-up></i-mdi:transfer-up></span>
         <span v-else><i-mdi:transfer-down></i-mdi:transfer-down></span>
-        <span>{{ changeRate }}%</span>
+        <span>{{ changeRate * 100 }}%</span>
       </div>
     </div>
     <div class="mt-1 text-white font-light text-sm">Test Coverage</div>
