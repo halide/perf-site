@@ -26,6 +26,7 @@ export default {
       isEqual,
       changeRate,
       coverageRateVizData,
+      coverageRate,
       isIncreasing,
     }
   },
@@ -35,9 +36,7 @@ export default {
 <template>
   <div class="p-5">
     <div class="flex flex-wrap items-center justify-between">
-      <div class="text-white font-semibold text-lg tracking-wider">
-        {{ coverageInfo.passed }} / {{ coverageInfo.passed + coverageInfo.skipped + coverageInfo.failed }}
-      </div>
+      <div class="text-white font-semibold text-lg tracking-wider">{{ coverageRate * 100 }}%</div>
       <div class="text-white opacity-95 font-medium tracking-wider flex items-center">
         <span v-if="isEqual"></span>
         <span v-else-if="isIncreasing"><i-mdi:transfer-up></i-mdi:transfer-up></span>

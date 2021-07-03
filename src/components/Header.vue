@@ -33,6 +33,10 @@ export default {
     <div class="md:hidden">
       <img src="../assets/logo.png" alt="Halide" class="w-32" />
     </div>
-    <div class="w-12 md:hidden"></div>
+    <div class="w-12">
+      <a href="https://github.com/halide/perf-site" target="_blank"
+        ><i-mdi:github class="h-6 w-6 opacity-40 hover:opacity-100 transition"></i-mdi:github
+      ></a>
+    </div>
   </header>
 </template>

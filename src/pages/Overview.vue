@@ -55,8 +55,8 @@ export default {
     </div>
   </div>
 
-  <div class="px-6 py-8">
-    <div class="bg-white rounded-sm border border-[#d8dbe0]">
+  <div class="px-6 py-4">
+    <Card>
       <div class="p-5 flex items-center justify-between">
         <div>
           <div class="text-lg tracking-wider">{{ selectedGraph }}</div>
@@ -112,6 +112,10 @@ export default {
         <PeriodExecutionTimeLineChart v-if="selectedGraph === 'Execution Time'"></PeriodExecutionTimeLineChart>
         <PeriodTestCoverageBarChart v-else-if="selectedGraph === 'Test Coverage'"></PeriodTestCoverageBarChart>
       </div>
-    </div>
+    </Card>
+
+    <Card class="mt-12">
+      <overviewTestSuitesPerformance></overviewTestSuitesPerformance>
+    </Card>
   </div>
 </template>
