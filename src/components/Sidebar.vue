@@ -56,6 +56,16 @@ export default {
             <span class="ml-5 text-sm font-light tracking-wide">Dashboard</span>
           </router-link>
         </li>
+        <li class="hover:bg-[#321fdb] transform transition duration-400 overflow-hidden hover:overflow-visible hover:w-56">
+          <router-link
+            to="/allCommits"
+            class="flex h-12 w-56 px-4 items-center"
+            :class="currentPath === '/allCommits' ? 'bg-[#ffffff] bg-opacity-5' : ''"
+          >
+            <i-ph:git-commit class="h-5 w-5"></i-ph:git-commit>
+            <span class="ml-5 text-sm font-light tracking-wide">All Commits</span>
+          </router-link>
+        </li>
       </ul>
     </div>
 
@@ -82,6 +92,17 @@ export default {
           >
             <i-clarity:dashboard-line class="h-5 w-5"></i-clarity:dashboard-line>
             <span class="ml-5 text-sm font-light tracking-wide">Dashboard</span>
+          </router-link>
+        </li>
+
+        <li class="hover:bg-[#321fdb] transform transition duration-400 overflow-hidden hover:overflow-visible hover:w-56">
+          <router-link
+            to="/allCommits"
+            class="flex h-14 w-56 px-4 items-center"
+            :class="currentPath === '/allCommits' ? 'bg-[#ffffff] bg-opacity-5' : ''"
+          >
+            <i-ph:git-commit class="h-5 w-5"></i-ph:git-commit>
+            <span class="ml-5 text-sm font-light tracking-wide">All Commits</span>
           </router-link>
         </li>
       </ul>

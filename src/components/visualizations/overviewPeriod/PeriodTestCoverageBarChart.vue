@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { debounce, EleResize } from 'utils/utils.js'
 
 export default {
+  name: 'PeriodTestCoverageBarChart',
   setup() {
     const name = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     const time = [0.2, 0.7, 0.3, 0.9, 0.4, 0.2, 0.7, 0.3, 0.9, 0.4, 0.2, 0.7, 0.3, 0.9, 0.4]

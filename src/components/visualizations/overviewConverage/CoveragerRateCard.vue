@@ -4,6 +4,7 @@ import rawData from '../../../../data/data1.js'
 import { getCoverageInfo, getCoverageRate } from '../../../../data/handler.js'
 
 export default {
+  name: 'CoveragerRateCard',
   setup() {
     const coverageInfo = getCoverageInfo(rawData)
     const coverageRate = ref(getCoverageRate(coverageInfo))

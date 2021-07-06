@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { debounce, EleResize } from 'utils/utils.js'
 
 export default {
+  name: 'ExecutionTimeLineChart',
   props: {
     vizInfo: {
       type: Object,

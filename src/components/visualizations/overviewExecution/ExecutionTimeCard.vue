@@ -4,6 +4,7 @@ import rawData from '../../../../data/data1.js'
 import { getExecutionTime } from '../../../../data/handler.js'
 
 export default {
+  name: 'ExecutionTimeCard',
   setup() {
     const excutionTime = ref(Number(getExecutionTime(rawData)))
     // Test data

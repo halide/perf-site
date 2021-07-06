@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { debounce, EleResize } from 'utils/utils.js'
 
 export default {
+  name: 'PeriodExecutionTimeLineChart',
   setup() {
     const name = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const time = [900, 1000, 800, 1231, 724, 778, 888, 919, 1000, 1111]

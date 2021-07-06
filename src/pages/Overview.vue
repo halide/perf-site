@@ -115,7 +115,7 @@ export default {
     </Card>
 
     <Card class="mt-12">
-      <overviewTestSuitesPerformance></overviewTestSuitesPerformance>
+      <OverviewTestSuitesPerformance></OverviewTestSuitesPerformance>
     </Card>
   </div>
 </template>
