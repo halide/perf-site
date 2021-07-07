@@ -1,6 +1,7 @@
 <script>
 import { ref } from 'vue'
 import rawData from '../../../../data/data1.js'
+import lastRawData from '../../../../data/data2.js'
 import { getCoverageInfo, getTestSuitesCoverageInfo, getCoverageRate, getExecutionTime } from '../../../../data/handler.js'
 
 export default {
@@ -8,6 +9,11 @@ export default {
   setup() {
     const coverageInfo = ref(getCoverageInfo(rawData))
     const testSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(rawData))
+    const executionTime = getExecutionTime(rawData)
+
+    const lastCoverageInfo = ref(getCoverageInfo(lastRawData))
+    const lastTestSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(lastRawData))
+    const lastExecutionTime = getExecutionTime(lastRawData)
 
     function getStateRate(info, target) {
       //  info: {passed: 0, failed: 0, skjpped: 0, executionTime: 0}
@@ -19,14 +25,15 @@ export default {
       return (info[target] / totalNum) * 100 + '%'
     }
 
-    const executionTime = getExecutionTime(rawData)
-
     return {
       coverageInfo,
+      lastCoverageInfo,
       testSuitesCoverageInfo,
+      lastTestSuitesCoverageInfo,
       getStateRate,
       getCoverageRate,
       executionTime,
+      lastExecutionTime,
     }
   },
 }
@@ -39,35 +46,48 @@ export default {
       <div class="text-sm text-gray-500 tracking-wide">Passed</div>
       <div class="flex items-center text-lg text-gray-900 font-semibold tracking-wider">
         {{ coverageInfo.passed }}
-        <span class="ml-1 text-sm font-normal text-gray-500">(+10)</span>
+        <span v-if="coverageInfo.passed - lastCoverageInfo.passed >= 0" class="ml-1 text-sm font-normal text-gray-500">
+          (+{{ coverageInfo.passed - lastCoverageInfo.passed }})
+        </span>
+        <span v-else class="ml-1 text-sm font-normal text-gray-500"> ({{ coverageInfo.passed - lastCoverageInfo.passed }}) </span>
       </div>
     </div>
     <div class="border-l-4 px-4 pt-1 border-red-500 rounded">
       <div class="text-sm text-gray-500 tracking-wide">Failed</div>
       <div class="flex items-center text-lg font-semibold text-gray-900 tracking-wider">
         {{ coverageInfo.failed }}
-        <span class="ml-1 text-sm font-normal text-gray-500">(-5)</span>
+        <span v-if="coverageInfo.failed - lastCoverageInfo.failed >= 0" class="ml-1 text-sm font-normal text-gray-500">
+          (+{{ coverageInfo.failed - lastCoverageInfo.failed }})
+        </span>
+        <span v-else class="ml-1 text-sm font-normal text-gray-500"> ({{ coverageInfo.failed - lastCoverageInfo.failed }}) </span>
       </div>
     </div>
     <div class="border-l-4 px-4 pt-1 border-yellow-500 rounded">
       <div class="text-sm text-gray-500 tracking-wide">Skipped</div>
       <div class="flex items-center text-lg font-semibold text-gray-900 tracking-wider">
         {{ coverageInfo.skipped }}
-        <span class="ml-1 text-sm font-normal text-gray-500">(-5)</span>
+        <span v-if="coverageInfo.skipped - lastCoverageInfo.skipped >= 0" class="ml-1 text-sm font-normal text-gray-500">
+          (+{{ coverageInfo.skipped - lastCoverageInfo.skipped }})
+        </span>
+        <span v-else class="ml-1 text-sm font-normal text-gray-500"> ({{ coverageInfo.skipped - lastCoverageInfo.skipped }}) </span>
       </div>
     </div>
     <div class="border-l-4 px-4 pt-1 border-fuchsia-500 rounded">
       <div class="text-sm text-gray-500 tracking-wide">Execution Time</div>
       <div class="flex items-center text-lg font-semibold text-gray-900 tracking-wider">
         {{ executionTime }}s
-        <span class="ml-1 text-sm font-normal text-gray-500">(-277.49s)</span>
+        <span v-if="executionTime - lastExecutionTime >= 0" class="ml-1 text-sm font-normal text-gray-500">
+          (+{{ executionTime - lastExecutionTime }}s)
+        </span>
+        <span v-else class="ml-1 text-sm font-normal text-gray-500"> ({{ executionTime - lastExecutionTime }}s) </span>
       </div>
     </div>
   </div>
   <div class="grid gap-1 lg:gap-4 grid-cols-1 lg:grid-cols-2">
     <div class="mb-4 px-5">
-      <hr class="border-t" />
-      <div v-for="item in testSuitesCoverageInfo" :key="item" class="mt-5 group">
+      <hr class="border-t mb-4" />
+      <h4 class="text-sm text-gray-600 text-center tooltip">Latest Commit</h4>
+      <div v-for="item in testSuitesCoverageInfo" :key="item" class="mt-1 group">
         <div>
           <div class="flex items-center justify-between">
             <div class="text-xs font-light tracking-wide text-gray-600">{{ item[0] }}</div>
@@ -111,8 +131,14 @@ export default {
       </div>
     </div>
     <div class="mb-4 px-5">
-      <hr class="border-t" />
-      <div v-for="item in testSuitesCoverageInfo" :key="item" class="mt-5 group">
+      <hr class="border-t mb-4" />
+      <h4 class="text-sm text-gray-600 text-center group relative tooltip">
+        Last Commit
+        <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
+          <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800"></div>
+        </div>
+      </h4>
+      <div v-for="item in lastTestSuitesCoverageInfo" :key="item" class="mt-1 group">
         <div>
           <div class="flex items-center justify-between">
             <div class="text-xs font-light tracking-wide text-gray-600">{{ item[0] }}</div>
