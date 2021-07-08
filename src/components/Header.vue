@@ -2,6 +2,10 @@
 import { useStore } from 'vuex'
 
 export default {
+  name: 'Header',
+  props: {
+    currentPath: String,
+  },
   setup() {
     const store = useStore()
     const hideSidebar = () => store.commit('hideSidebar')
@@ -25,7 +29,7 @@ export default {
       </button>
       <ul class="ml-10 hidden md:block">
         <li class="opacity-40 hover:opacity-70 transition">
-          <router-link to="/dashboard" class="text-sm">Dashboard</router-link>
+          <router-link :to="currentPath" class="text-sm capitalize">{{ currentPath.slice(1) }}</router-link>
         </li>
       </ul>
     </div>

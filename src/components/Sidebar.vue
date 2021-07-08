@@ -1,10 +1,12 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
 
 export default {
   name: 'Sidebar',
+  props: {
+    currentPath: String,
+  },
   setup() {
     const store = useStore()
     const isSidebarMinimize = computed(() => store.state.isSidebarMinimize)
@@ -21,15 +23,11 @@ export default {
       return 'w-56'
     })
 
-    const router = useRouter()
-    const currentPath = router.currentRoute.value.fullPath
-
     return {
       isSidebarShow,
       isSidebarMinimize,
       isSidebarMobileShow,
       sidebarWidth,
-      currentPath,
       toggleSidebar,
     }
   },

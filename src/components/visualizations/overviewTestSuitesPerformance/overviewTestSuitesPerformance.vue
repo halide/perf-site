@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import rawData from '../../../../data/data1.js'
 import lastRawData from '../../../../data/data2.js'
-import { getCoverageInfo, getTestSuitesCoverageInfo, getCoverageRate, getExecutionTime } from '../../../../data/handler.js'
+import { getCoverageInfo, getTestSuitesCoverageInfo, getCoverageRate, getExecutionTime, getTestRunDate } from '../../../../data/handler.js'
 
 export default {
   name: 'OverviewTestSuitesPerformance',
@@ -10,10 +10,12 @@ export default {
     const coverageInfo = ref(getCoverageInfo(rawData))
     const testSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(rawData))
     const executionTime = getExecutionTime(rawData)
+    const commitTime = getTestRunDate(rawData)
 
     const lastCoverageInfo = ref(getCoverageInfo(lastRawData))
     const lastTestSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(lastRawData))
     const lastExecutionTime = getExecutionTime(lastRawData)
+    const lastCommitTime = getTestRunDate(lastRawData)
 
     function getStateRate(info, target) {
       //  info: {passed: 0, failed: 0, skjpped: 0, executionTime: 0}
@@ -34,6 +36,8 @@ export default {
       getCoverageRate,
       executionTime,
       lastExecutionTime,
+      commitTime,
+      lastCommitTime,
     }
   },
 }
@@ -86,7 +90,16 @@ export default {
   <div class="grid gap-1 lg:gap-4 grid-cols-1 lg:grid-cols-2">
     <div class="mb-4 px-5">
       <hr class="border-t mb-4" />
-      <h4 class="text-sm text-gray-600 text-center tooltip">Latest Commit</h4>
+      <h4 class="text-sm text-gray-600 text-center">
+        <span class="group relative"
+          >Latest Commit
+          <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
+            <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800">
+              Commit Time: {{ commitTime }}
+            </div>
+          </div></span
+        >
+      </h4>
       <div v-for="item in testSuitesCoverageInfo" :key="item" class="mt-1 group">
         <div>
           <div class="flex items-center justify-between">
@@ -132,11 +145,15 @@ export default {
     </div>
     <div class="mb-4 px-5">
       <hr class="border-t mb-4" />
-      <h4 class="text-sm text-gray-600 text-center group relative tooltip">
-        Last Commit
-        <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
-          <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800"></div>
-        </div>
+      <h4 class="text-sm text-gray-600 text-center">
+        <span class="group relative">
+          Last Commit
+          <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
+            <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800">
+              Commit Time: {{ lastCommitTime }}
+            </div>
+          </div>
+        </span>
       </h4>
       <div v-for="item in lastTestSuitesCoverageInfo" :key="item" class="mt-1 group">
         <div>

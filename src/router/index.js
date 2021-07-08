@@ -10,6 +10,10 @@ const routes = [
         path: '',
         component: () => import('pages/Overview.vue'),
       },
+      {
+        path: '/allCommits',
+        component: () => import('pages/AllCommits.vue'),
+      },
     ],
   },
 ]
