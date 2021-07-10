@@ -11,11 +11,16 @@ const routes = [
         component: () => import('pages/Overview.vue'),
       },
       {
-        path: '/allCommits',
-        component: () => import('pages/AllCommits.vue'),
+        path: '/allChanges',
+        component: () => import('pages/AllChanges.vue'),
+      },
+      {
+        path: '/detail/:id',
+        component: () => import('pages/Detail.vue'),
       },
     ],
   },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('pages/NotFound.vue') },
 ]
 
 const router = new createRouter({
