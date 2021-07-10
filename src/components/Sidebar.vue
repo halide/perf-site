@@ -56,12 +56,12 @@ export default {
         </li>
         <li class="hover:bg-[#321fdb] transform transition duration-400 overflow-hidden hover:overflow-visible hover:w-56">
           <router-link
-            to="/allCommits"
+            to="/allChanges"
             class="flex h-12 w-56 px-4 items-center"
-            :class="currentPath === '/allCommits' ? 'bg-[#ffffff] bg-opacity-5' : ''"
+            :class="currentPath === '/allChanges' ? 'bg-[#ffffff] bg-opacity-5' : ''"
           >
             <i-ph:git-commit class="h-5 w-5"></i-ph:git-commit>
-            <span class="ml-5 text-sm font-light tracking-wide">All Commits</span>
+            <span class="ml-5 text-sm font-light tracking-wide">All Changes</span>
           </router-link>
         </li>
       </ul>
@@ -95,12 +95,12 @@ export default {
 
         <li class="hover:bg-[#321fdb] transform transition duration-400 overflow-hidden hover:overflow-visible hover:w-56">
           <router-link
-            to="/allCommits"
+            to="/allChanges"
             class="flex h-14 w-56 px-4 items-center"
-            :class="currentPath === '/allCommits' ? 'bg-[#ffffff] bg-opacity-5' : ''"
+            :class="currentPath === '/allChanges' ? 'bg-[#ffffff] bg-opacity-5' : ''"
           >
             <i-ph:git-commit class="h-5 w-5"></i-ph:git-commit>
-            <span class="ml-5 text-sm font-light tracking-wide">All Commits</span>
+            <span class="ml-5 text-sm font-light tracking-wide">All Changes</span>
           </router-link>
         </li>
       </ul>

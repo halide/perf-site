@@ -13,6 +13,8 @@ export default {
   },
   setup() {
     const testRunDate = ref(getTestRunDate(rawData))
+    const latestId = '#6129'
+    const lastId = '#6128'
     const allDetailGraph = ['Execution Time', 'Test Coverage', 'Memory Footprint', 'Code Size']
     const selectedGraph = ref(allDetailGraph[0])
 
@@ -20,6 +22,8 @@ export default {
       testRunDate,
       allDetailGraph,
       selectedGraph,
+      latestId,
+      lastId,
     }
   },
 }
@@ -61,7 +65,8 @@ export default {
         <div>
           <div class="text-lg tracking-wider">{{ selectedGraph }}</div>
           <div class="text-sm text-gray-500">
-            Latest Commit: <span class="text-xs text-gray-500">{{ testRunDate }}</span>
+            Latest Change: <span class="text-xs text-gray-500">{{ testRunDate }}</span>
+            <span class="ml-1 text-xs">({{ latestId }})</span>
           </div>
         </div>
         <Listbox v-model="selectedGraph" as="div" class="relative inline-block text-left">

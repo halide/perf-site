@@ -11,11 +11,13 @@ export default {
     const testSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(rawData))
     const executionTime = getExecutionTime(rawData)
     const commitTime = getTestRunDate(rawData)
+    const latestId = '#6129'
 
     const lastCoverageInfo = ref(getCoverageInfo(lastRawData))
     const lastTestSuitesCoverageInfo = ref(getTestSuitesCoverageInfo(lastRawData))
     const lastExecutionTime = getExecutionTime(lastRawData)
     const lastCommitTime = getTestRunDate(lastRawData)
+    const lastId = '#6128'
 
     function getStateRate(info, target) {
       //  info: {passed: 0, failed: 0, skjpped: 0, executionTime: 0}
@@ -38,6 +40,8 @@ export default {
       lastExecutionTime,
       commitTime,
       lastCommitTime,
+      latestId,
+      lastId,
     }
   },
 }
@@ -92,7 +96,7 @@ export default {
       <hr class="border-t mb-4" />
       <h4 class="text-sm text-gray-600 text-center">
         <span class="group relative"
-          >Latest Commit
+          >Latest Commit: {{ latestId }}
           <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
             <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800">
               Commit Time: {{ commitTime }}
@@ -147,7 +151,7 @@ export default {
       <hr class="border-t mb-4" />
       <h4 class="text-sm text-gray-600 text-center">
         <span class="group relative">
-          Last Commit
+          Last Commit: {{ lastId }}
           <div class="absolute right-0 bottom-0 mb-6 shadow-lg hidden group-hover:block tooltip">
             <div class="z-10 px-4 py-2 whitespace-nowrap rounded-lg relative text-xs text-white bg-gray-800">
               Commit Time: {{ lastCommitTime }}
