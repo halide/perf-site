@@ -538,7 +538,7 @@ export default {
           <i-ph:git-pull-request-light v-if="item.type === 'pull'" class="mr-3 h-6 w-6 text-green-700"> </i-ph:git-pull-request-light>
           <i-ph:git-commit-light v-else class="mr-3 h-6 w-6 text-green-700"></i-ph:git-commit-light>
           <div class="flex w-full items-center justify-between">
-            <div class="w-5/6">
+            <div class="w-5/6 lg:w-2/3 xl:w-1/2">
               <a :href="item.url" class="text-sm font-semibold hover:text-blue-700 hover:underline transition"
                 >{{ item.title }} (<span class="text-blue-700 font-medium">{{ item.id }}</span
                 >)
@@ -550,7 +550,7 @@ export default {
                 <i-system-uicons:menu-horizontal class="h-3 w-4"></i-system-uicons:menu-horizontal>
               </button>
               <div v-if="state.showCommentsArr[start + index] === true" class="font-mono my-3 text-xs font-light">
-                <p class="mb-3">Comment: {{ item.comments }}</p>
+                <p class="mb-3 mr-8 text-justify">Comment: {{ item.comments }}</p>
                 <p class="">Changed Files:</p>
                 <ul class="list-disc list-inside">
                   <li v-for="file in item.changedFiles" :key="file">{{ file }}</li>
@@ -657,7 +657,7 @@ export default {
           rounded-l-lg
           hover:bg-blue-600 hover:text-white
           focus:outline-none
-          disabled:opacity-50
+          disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-blue-600
         "
         :disabled="start === 0"
         @click="prev"
@@ -673,7 +673,7 @@ export default {
           rounded-r-lg
           hover:bg-blue-600 hover:text-white
           focus:outline-none
-          disabled:opacity-50
+          disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-blue-600
         "
         :disabled="end === pageInfo.total"
         @click="next"
