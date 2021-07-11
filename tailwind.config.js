@@ -15,6 +15,10 @@ module.exports = {
         orange: colors.orange,
         fuchsia: colors.fuchsia,
       },
+      screens: {
+        xs: '420px',
+        // => @media (min-width: 640px) { ... }
+      },
     },
   },
   variants: {

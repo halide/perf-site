@@ -49,7 +49,7 @@ export default {
 
 <template>
   <h3 class="px-5 py-2 border-b"><span class="text-sm text-gray-600">Performance on Test Suites</span></h3>
-  <div class="px-5 py-6 grid grid-cols-2 gap-8 lg:grid-cols-4">
+  <div class="px-5 py-6 grid grid-cols-1 xs:grid-cols-2 gap-8 lg:grid-cols-4">
     <div class="border-l-4 px-4 pt-1 border-blue-500 rounded">
       <div class="text-sm text-gray-500 tracking-wide">Passed</div>
       <div class="flex items-center text-lg text-gray-900 font-semibold tracking-wider">
