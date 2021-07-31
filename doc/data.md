@@ -1,10 +1,6 @@
 
 ## Data Storage
 
-### Test Properties
-
-
-
 ### GitHub Info 
 
 | Name           | Type            | Examples                                                                                                                                                                                                                                     |
