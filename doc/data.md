@@ -24,9 +24,9 @@
 | `Label`           | `string`              | "error" \| "Adams2019" \| "correctness"                                                                                                                                                                      |
 | `Status`          | `string`              | 'passed' \| 'skipped' \| 'failed'                                                                                                                                                                            |
 | `Processors`      | `double`              | 1                                                                                                                                                                                                            |
-| `Execution Time`  | `double` \| `null`    | 0.527823                                                                                                                                                                                                     |
+| `Execution Time`  | `double`   | 0.527823                                                                                                                                                                                                     |
 | `Environment`     | `string`              | "HL_TARGET=host HL_JIT_TARGET=host #CTEST_RESOURCE_GROUP_COUNT="                                                                                                                                             |
-| `PassReason`      | `string`    \| `null` | "Required regular expression not found. Regex=[Success!\n]"                                                                                                                                                  |
+| `PassReason`      | `string`   | "Required regular expression not found. Regex=[Success!\n]"                                                                                                                                                  |
 | `Description`     | `string`              | "[SKIP] Need two or more GPU targets enabled." \| 'Benchmark for demo produces best case of 0.0279919 sec/iter (over 3 samples, 39 iterations, accuracy 2.6%).\nBest output throughput is 0.082 mpix/sec.\n' |
 
 
