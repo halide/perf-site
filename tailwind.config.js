@@ -14,6 +14,9 @@ module.exports = {
         amber: colors.amber,
         orange: colors.orange,
         fuchsia: colors.fuchsia,
+        cyan: colors.cyan,
+        rose: colors.rose,
+        teal: colors.teal,
       },
       screens: {
         xs: '420px',

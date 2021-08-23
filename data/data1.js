@@ -24,7 +24,7 @@ const rawData = [
     measurement:
       'Benchmark for demo produces best case of 0.0210335 sec/iter (over 3 samples, 51 iterations, accuracy 2.3%).\nBest output throughput is 0.11 mpix/sec.\n',
     label: 'Adams2019',
-    type: 'passed',
+    type: 'failed',
   },
   {
     name: 'demo_included_schedule_file',
@@ -73,7 +73,7 @@ const rawData = [
     Environment: 'HL_TARGET=host\n#CTEST_RESOURCE_GROUP_COUNT=',
     measurement: 'seed: 1617878011\nPerfect hash map test passed\n',
     label: 'Adams2019',
-    type: 'passed',
+    type: 'skipped',
   },
   {
     name: 'test_function_dag',
@@ -8186,6 +8186,7 @@ const rawData = [
     Environment: '#CTEST_RESOURCE_GROUP_COUNT=',
     measurement:
       'eJyLNtQ3ilVwKs3MScnMS1dwjohQyE/KSk0uUSioLMnIz4tPyswDyRTrl5SW5BdlJuboO/smZqe6ZeakFusDcTFQjaFBfEZiTmZKql5KZhGmYEGlXnJBgV4+V7QRyDKfzLxsmF3FGYlFqSkKufkppTmpuK3EMLI4nwsAbidDYg==',
+    label: 'python',
     type: 'passed',
   },
   {
